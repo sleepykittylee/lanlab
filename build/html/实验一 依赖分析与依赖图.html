@@ -1,13 +1,13 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="Chinese" >
+<html class="writer-html5" lang="zh-CN" >
 <head>
   <meta charset="utf-8" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>实验一: 依赖分析与依赖图 &mdash; Group Li_Yang_Mao_Chen  documentation</title>
+  <title>实验一: 依赖分析与依赖图 &mdash; Group Li_Yang_Mao_Chen  文档</title>
   
 
   
@@ -32,13 +32,14 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to Group Li_Yang_Mao_Chen&#39;s documentation!" href="index.html" /> 
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="prev" title="Welcome to Group Li_Yang_Mao_Chen’s documentation!" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -175,25 +176,25 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>实验一: 依赖分析与依赖图<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>实验一: 依赖分析与依赖图<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <center>作者：李康恬 陈佳瑛 杨恺 毛科捷<br>日期：2021/5/12&emsp;&emsp;来源：浙江师范大学<br></center>
 <div class="section" id="id2">
-<h2>摘要<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>摘要<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>在软件开发的过程中，我们需要设计编写许多模型架构，在使用HTTP APIs帮助开发的过程中，为提高系统的健壮性，需要规避模块（或类）的依赖关系非常复杂的“Big ball of mud”的情形。</p>
 <p>此次实验，我们借助一些工具进行对EnglishPal项目依赖情况的研究，通过分析其模块与类的依赖关系，来理解项目的基本架构。实验中通过使用Snakefood、Graphviz及Pyreverse工具结合人工代码阅读得到依赖关系，生成依赖的dot文件，并使用Graphviz Online工具将依赖图表绘制出来。</p>
 <p>最终我们对项目的依赖关系进行分析得出结论，讨论得出项目各模块具有较好的依赖关系与可读性，但在封装上仍存在一定的不足，有待后续开发人员进行更好地调整改进。</p>
 </div>
 <div class="section" id="id3">
-<h2>介绍<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>介绍<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>Percival和Gregory在他们的《<a class="reference external" href="https://www.cosmicpython.com/">Architecture Patterns with Python</a>》一书中提到，耦合是一个令人讨厌的事情：它增加了更改代码的风险和成本，有时甚至使我们感到根本无法进行任何更改。而当项目的耦合达到一定程度对我们的系统造成困扰时，我们称这种情况为“Big ball of mud”，书中对其如此描述：</p>
 <p><em>”随着应用程序的发展，如果我们无法防止没有内聚力的元素之间的耦合，那么这种耦合将以超线性的方式增加，直到我们不再能够有效地更改系统为止。“</em></p>
 <p>各种意义上，我们都希望我们的软件应用程序中避免使用和出现诸如<a class="reference external" href="https://thedailywtf.com/articles/Enterprise-Dependency-Big-Ball-of-Yarn">yarn-like dependency</a>、<a class="reference external" href="https://thedailywtf.com/images/201101/DependencyGraph.png">silkworm cocoon-like dependency</a>和<a class="reference external" href="https://thedailywtf.com/images/201103/tes0001.jpg">anglerfish-like dependency</a>的“Big ball of mud”项目依赖模式。</p>
 <p>为学会如何绘制软件项目的依赖图以及进行更好的分析理解，了解体系结构，服务于未来项目的架构设计与开发维护过程中。我们以EnglishPal项目为对象，借助一些工具进行依赖图的绘制，在此基础上对其依赖关系进行分析，了解并梳理出当前系统项目的健康情况/健壮情况。</p>
 </div>
 <div class="section" id="id4">
-<h2>工具与方法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>工具与方法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id5">
-<h3>工具<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>工具<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">putty</a></p></li>
 <li><p>Snakefood</p></li>
@@ -205,9 +206,9 @@
 </ul>
 </div>
 <div class="section" id="id6">
-<h3>方法<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>方法<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <div class="section" id="snakefood">
-<h4>利用Snakefood生成模型依赖关系<a class="headerlink" href="#snakefood" title="Permalink to this headline">¶</a></h4>
+<h4>利用Snakefood生成模型依赖关系<a class="headerlink" href="#snakefood" title="永久链接至标题">¶</a></h4>
 <ol>
 <li><p>安装putty后打开，在IP地址栏输入server的ip地址，点击打开后输入老师为我们创建的用户名与密码，登入server;</p>
 <p><img alt="" src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519102703314e251f95cad1c877aa2a6c793e6709c93d516c.png" /></p>
@@ -230,7 +231,7 @@ $  less result.dot
 </ol>
 </div>
 <div class="section" id="pyreverse">
-<h4>利用Pyreverse生成模型依赖关系及类/方法依赖关系<a class="headerlink" href="#pyreverse" title="Permalink to this headline">¶</a></h4>
+<h4>利用Pyreverse生成模型依赖关系及类/方法依赖关系<a class="headerlink" href="#pyreverse" title="永久链接至标题">¶</a></h4>
 <p>绘制方法参考https://zhuanlan.zhihu.com/p/365953969，此处不予具体介绍展示。</p>
 <p>生成依赖关系的代码如下，运行代码时终端的响应见下图。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$  pyreverse -ASmy -o dot -p englishpal app/
@@ -240,15 +241,15 @@ $  less result.dot
 <center>图五：终端响应情况</center>
 </div>
 <div class="section" id="graphviz-onlinedot">
-<h4>利用Graphviz Online将dot文件绘制成图<a class="headerlink" href="#graphviz-onlinedot" title="Permalink to this headline">¶</a></h4>
+<h4>利用Graphviz Online将dot文件绘制成图<a class="headerlink" href="#graphviz-onlinedot" title="永久链接至标题">¶</a></h4>
 <p>将生成的dot文件中的内容复制到Graphviz Online的左侧页面中，页面右侧相应画出对应的依赖图，并设置输出的格式即Format，点击右侧页面中的图片即可保存。</p>
 </div>
 </div>
 </div>
 <div class="section" id="id7">
-<h2>结果<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>结果<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <div class="section" id="py">
-<h3>py文件之间的依赖：<a class="headerlink" href="#py" title="Permalink to this headline">¶</a></h3>
+<h3>py文件之间的依赖：<a class="headerlink" href="#py" title="永久链接至标题">¶</a></h3>
 <img src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519110258graphviz.png" style="zoom:50%;" />
 <center>图六：通过snakefood生成的model dependency图</center>
 <img src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191104422.png" style="zoom:40%;" />
@@ -264,7 +265,7 @@ $  less result.dot
 <p>而其中main.py依赖的py文件最多，而依赖于pickle_idea.py的py文件最多，这main.py在项目中占据重要控制地位，而pickle_idea.py在项目中为一个较重要的工具角色。通过后续观察各文件的内容，证明了main.py是一个执行功能文件，pickle_idea.py是一个底层基础的文件。包与包之间关系较好。</p>
 </div>
 <div class="section" id="id8">
-<h3>类图中的依赖：<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3>类图中的依赖：<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <img src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191114271.png" style="zoom:40%;" />
 <center>图八：通过pyreverse生成的class dependency图</center>
 <center></center>
@@ -276,7 +277,7 @@ $  less result.dot
 </div>
 </div>
 <div class="section" id="id9">
-<h2>讨论<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2>讨论<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p>基于实验得出的依赖图，团队进行讨论，认为EnglishPal项目的结构有利有弊，简单列举如下：</p>
 <ul class="simple">
 <li><p>优点：代码重用少，功能封装逻辑清晰，变量和方法命名准确使得代码可读性强，代码的结构分为大致三层，第一层为最底层，涉及到对数据库的最基本操作，第二层为功能层，将最底层的对数据库的操作进行组合封装以实现单独的功能，第三层也是最顶层，主要是main.py，他实现的是页面的加载和功能的调用。</p></li>
@@ -285,7 +286,7 @@ $  less result.dot
 <p>团队认为该项目各模块之间功能分明，逻辑清晰，具有较好的可读性，但在封装上仍存在一定的不足，需要进行更好的改进。</p>
 </div>
 <div class="section" id="id10">
-<h2>参考资料<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<h2>参考资料<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>开源书籍：<a class="reference external" href="https://www.cosmicpython.com/">Harry Percival and Bob Gregory. Architecture Patterns with Python</a>. O’Reilly Media; 1st edition (March 31, 2020).</p></li>
 <li><p>知乎专栏： [Pyreverse结合Graphviz自动绘制Python类图</p></li>
@@ -299,14 +300,14 @@ $  less result.dot
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Group Li_Yang_Mao_Chen&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Group Li_Yang_Mao_Chen’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, kittylee.
+        &#169; 版权所有 2021, kittylee.
 
     </p>
   </div>
