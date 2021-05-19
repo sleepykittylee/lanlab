@@ -222,13 +222,13 @@ mud”项目依赖模式。</p>
 <h4>利用Snakefood生成模型依赖关系<a class="headerlink" href="#snakefood" title="永久链接至标题">¶</a></h4>
 <ol class="arabic">
 <li><p>安装putty后打开，在IP地址栏输入server的ip地址，点击打开后输入老师为我们创建的用户名与密码，登入server;</p>
-<img alt="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519102703314e251f95cad1c877aa2a6c793e6709c93d516c.png" src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519102703314e251f95cad1c877aa2a6c793e6709c93d516c.png" />
+<img alt="_images/pic1.png" src="_images/pic1.png" />
 <center><p>图一：PuTTY配置窗口</p>
 </center></li>
 <li><p>登入后，通过<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code>指令将EnglishPal项目代码下载下来，并通过<code class="docutils literal notranslate"><span class="pre">cp</span></code>指令将py文件复制到我们建立的文件夹中；</p>
-<img alt="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191031251(1).jpg" src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191031251(1).jpg" />
+<img alt="_images/pic2.jpg" src="_images/pic2.jpg" />
 <center><p>图二：git clone</p>
-</center><img alt="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191031402.jpg" src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191031402.jpg" />
+</center><img alt="_images/pic3.jpg" src="_images/pic3.jpg" />
 <center><p>图三：复制所有py文件</p>
 </center></li>
 <li><p>复制完毕后<code class="docutils literal notranslate"><span class="pre">cd</span></code>到我们存放py的文件目录中，分别执行第一行，通过snakefood中的sfood工具，生成其依赖关系的dot文件，再执行<code class="docutils literal notranslate"><span class="pre">less</span></code>指令查看result.dot的文件内容，至此我们模型的依赖关系代码就自动地生成完毕。</p>
@@ -236,7 +236,7 @@ mud”项目依赖模式。</p>
 $  less result.dot
 </pre></div>
 </div>
-<img alt="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519104849D6ED43F0-0B2E-4B6C-B41D-683C60993E92.png" src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519104849D6ED43F0-0B2E-4B6C-B41D-683C60993E92.png" />
+<img alt="_images/pic4.png" src="_images/pic4.png" />
 <center><p>图四：通过snakefood生成dot格式的依赖关系代码</p>
 </center></li>
 </ol>
@@ -248,7 +248,7 @@ $  less result.dot
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$  pyreverse -ASmy -o dot -p englishpal app/
 </pre></div>
 </div>
-<img alt="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519105402EAE4C62E3EDFF7AB3C872F85B18210A6.png" src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519105402EAE4C62E3EDFF7AB3C872F85B18210A6.png" />
+<img alt="_images/pic5.png" src="_images/pic5.png" />
 <center><p>图五：终端响应情况</p>
 </center></div>
 <div class="section" id="graphviz-onlinedot">
@@ -262,9 +262,9 @@ Online的左侧页面中，页面右侧相应画出对应的依赖图，并设�
 <h2>3 结果<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <div class="section" id="py">
 <h3>3.1 py文件之间的依赖：<a class="headerlink" href="#py" title="永久链接至标题">¶</a></h3>
-<img alt="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519110258graphviz.png" src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519110258graphviz.png" />
+<img alt="_images/pic6.png" src="_images/pic6.png" />
 <center><p>图六：通过snakefood生成的model dependency图</p>
-</center><img alt="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191104422.png" src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191104422.png" />
+</center><img alt="_images/pic7.png" src="_images/pic7.png" />
 <center><p>图七：通过pyreverse生成的model dependency图</p>
 </center><p>两张图分别为使用snakefood和pyreverse工具自动生成并用Graphviz Online绘制的模型依赖图。</p>
 <p>可以看出snakefood绘制的会更清晰美观，且能包含在各py文件中<code class="docutils literal notranslate"><span class="pre">import</span></code>的python包；而pyreverse绘制的则更简洁的表示了项目中模型的依赖关系。两个工具各有利弊，但相对来说老师提供的会更加全面些。</p>
@@ -279,9 +279,9 @@ Online的左侧页面中，页面右侧相应画出对应的依赖图，并设�
 </div>
 <div class="section" id="id8">
 <h3>3.2 类图中的依赖：<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
-<img alt="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191114271.png" src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191114271.png" />
+<img alt="_images/pic8.png" src="_images/pic8.png" />
 <center><p>图八：通过pyreverse生成的class dependency图</p>
-</center><center></center><img alt="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519112136graphviz%20(1).png" src="https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519112136graphviz%20(1).png" />
+</center><center></center><img alt="_images/pic9.png" src="_images/pic9.png" />
 <center><p>图九：经过手动添加修正后的class dependency图</p>
 </center><p>上示两图分别为我们通过pyreverse工具以及后期手动修正的类依赖图。pyreverse的自动生成功能可以看出，在我们的要求中并不特别适用于EnglishPal项目的类/方法依赖图绘制。</p>
 <p>pyreverse其功能，我们简单概括可以理解为，它扫描读取各py文件中的class块并建立class之间的关系，也就是可以理解为进行纯类图的绘制。而我们的要求中，要求建立class/function即类/方法依赖图，即py函数中为被封装进类中的方法也要算入并进行绘制，因此pyreverse生成的dot文件并不完全，需要我们后期手动添加。</p>

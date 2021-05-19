@@ -80,7 +80,7 @@ mud”项目依赖模式。
 
 1. 安装putty后打开，在IP地址栏输入server的ip地址，点击打开后输入老师为我们创建的用户名与密码，登入server;
 
-   .. image:: https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519102703314e251f95cad1c877aa2a6c793e6709c93d516c.png
+   .. image:: images/pic1.png
 
    .. raw:: html
 
@@ -94,7 +94,7 @@ mud”项目依赖模式。
 
 2. 登入后，通过\ ``git clone``\ 指令将EnglishPal项目代码下载下来，并通过\ ``cp``\ 指令将py文件复制到我们建立的文件夹中；
 
-   .. image:: https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191031251(1).jpg
+   .. image:: images/pic2.jpg
 
    .. raw:: html
 
@@ -106,7 +106,7 @@ mud”项目依赖模式。
 
       </center>
 
-   .. image:: https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191031402.jpg
+   .. image:: images/pic3.jpg
 
    .. raw:: html
 
@@ -125,7 +125,7 @@ mud”项目依赖模式。
       $  sfood . | sfood-graph > result.dot
       $  less result.dot
 
-   .. image:: https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519104849D6ED43F0-0B2E-4B6C-B41D-683C60993E92.png
+   .. image:: images/pic4.png
 
    .. raw:: html
 
@@ -155,7 +155,7 @@ mud”项目依赖模式。
 
    $  pyreverse -ASmy -o dot -p englishpal app/
 
-.. image:: https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519105402EAE4C62E3EDFF7AB3C872F85B18210A6.png
+.. image:: images/pic5.png
 
 .. raw:: html
 
@@ -179,7 +179,7 @@ Online的左侧页面中，页面右侧相应画出对应的依赖图，并设�
 3.1 py文件之间的依赖：
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519110258graphviz.png
+.. image:: images/pic6.png
 
 .. raw:: html
 
@@ -192,7 +192,7 @@ Online的左侧页面中，页面右侧相应画出对应的依赖图，并设�
 
    </center>
 
-.. image:: https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191104422.png
+.. image:: images/pic7.png
 
 .. raw:: html
 
@@ -223,7 +223,7 @@ Online的左侧页面中，页面右侧相应画出对应的依赖图，并设�
 3.2 类图中的依赖：
 ~~~~~~~~~~~~~~~~~~~~
 
-.. image:: https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_2105191114271.png
+.. image:: images/pic8.png
 
 .. raw:: html
 
@@ -243,7 +243,7 @@ Online的左侧页面中，页面右侧相应画出对应的依赖图，并设�
 
    </center>
 
-.. image:: https://images.cnblogs.com/cnblogs_com/donuts/1810388/o_210519112136graphviz%20(1).png
+.. image:: images/pic9.png
 
 .. raw:: html
 
