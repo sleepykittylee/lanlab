@@ -12,10 +12,3 @@ Welcome to Group Li_Yang_Mao_Chen's documentation!
    
    实验一 依赖分析与依赖图
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
