@@ -5,11 +5,15 @@
 
    <center>
 
-作者：李康恬 陈佳瑛 杨恺 毛科捷
+作者：201836900206-李康恬、201836900203-陈佳瑛、
+
+      201836900127-杨恺、201836000121-毛科捷
 
 .. raw:: html
 
    </center>
+
+.. raw:: html
 
    <center>
 
@@ -19,7 +23,7 @@
 
    </center>
 
-0 摘要
+摘要
 ------
 
 在软件开发的过程中，我们需要设计编写许多模型架构，在使用HTTP
@@ -31,7 +35,7 @@ Online工具将依赖图表绘制出来。
 
 最终我们对项目的依赖关系进行分析得出结论，讨论得出项目各模块具有较好的依赖关系与可读性，但在封装上仍存在一定的不足，有待后续开发人员进行更好地调整改进。
 
-1 介绍
+介绍
 ------
 
 Percival和Gregory在他们的《\ `Architecture Patterns with
@@ -47,15 +51,11 @@ mud”项目依赖模式。
 
 为学会如何绘制软件项目的依赖图以及进行更好的分析理解，了解体系结构，服务于未来项目的架构设计与开发维护过程中。我们以EnglishPal项目为对象，借助一些工具进行依赖图的绘制，在此基础上对其依赖关系进行分析，了解并梳理出当前系统项目的健康情况/健壮情况。
 
-.. _Architecture Patterns with Python: https://www.cosmicpython.com/
-.. _yarn-like dependency: https://thedailywtf.com/articles/Enterprise-Dependency-Big-Ball-of-Yarn
-.. _silkworm cocoon-like dependency: https://thedailywtf.com/images/201101/DependencyGraph.png
-.. _anglerfish-like dependency: https://thedailywtf.com/images/201103/tes0001.jpg
 
-2 工具与方法
+工具与方法
 ------------
 
-2.1 工具
+工具
 ~~~~~~~~
 
 -  `putty`_
@@ -72,51 +72,24 @@ mud”项目依赖模式。
 
 -  Windows System
 
-2.2 方法
+方法
 ~~~~~~~~
 
 利用Snakefood生成模型依赖关系
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. 安装putty后打开，在IP地址栏输入server的ip地址，点击打开后输入老师为我们创建的用户名与密码，登入server;
+1. 安装putty后打开，在IP地址栏输入server的ip地址，点击打开后输入用户名与密码，登入server;
 
    .. image:: images/pic1.png
 
-   .. raw:: html
-
-      <center>
-
-   图一：PuTTY配置窗口
-
-   .. raw:: html
-
-      </center>
 
 2. 登入后，通过\ ``git clone``\ 指令将EnglishPal项目代码下载下来，并通过\ ``cp``\ 指令将py文件复制到我们建立的文件夹中；
 
    .. image:: images/pic2.jpg
 
-   .. raw:: html
-
-      <center>
-
-   图二：git clone
-
-   .. raw:: html
-
-      </center>
 
    .. image:: images/pic3.jpg
 
-   .. raw:: html
-
-      <center>
-
-   图三：复制所有py文件
-
-   .. raw:: html
-
-      </center>
 
 3. 复制完毕后\ ``cd``\ 到我们存放py的文件目录中，分别执行第一行，通过snakefood中的sfood工具，生成其依赖关系的dot文件，再执行\ ``less``\ 指令查看result.dot的文件内容，至此我们模型的依赖关系代码就自动地生成完毕。
 
@@ -127,27 +100,12 @@ mud”项目依赖模式。
 
    .. image:: images/pic4.png
 
-   .. raw:: html
-
-      <center>
-
-   图四：通过snakefood生成dot格式的依赖关系代码
-
-   .. raw:: html
-
-      </center>
-
-.. _putty: https://www.chiark.greenend.org.uk/~sgtatham/putty/
-
-.. _Graphviz Online: https://dreampuf.github.io/GraphvizOnline/
-
-.. _EnglishPal项目: https://github.com/lanlab-org/EnglishPal
 
 
 利用Pyreverse生成模型依赖关系及类/方法依赖关系
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-绘制方法参考https://zhuanlan.zhihu.com/p/365953969，此处不予具体介绍展示。
+绘制方法参考知乎专栏： `Pyreverse结合Graphviz自动绘制Python类图`_，此处不予具体介绍展示。
 
 生成依赖关系的代码如下，运行代码时终端的响应见下图。
 
@@ -157,15 +115,6 @@ mud”项目依赖模式。
 
 .. image:: images/pic5.png
 
-.. raw:: html
-
-   <center>
-
-图五：终端响应情况
-
-.. raw:: html
-
-   </center>
 
 利用Graphviz Online将dot文件绘制成图
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -173,36 +122,16 @@ mud”项目依赖模式。
 将生成的dot文件中的内容复制到Graphviz
 Online的左侧页面中，页面右侧相应画出对应的依赖图，并设置输出的格式即Format，点击右侧页面中的图片即可保存。
 
-3 结果
+结果
 ------
 
-3.1 py文件之间的依赖：
+py文件之间的依赖：
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: images/pic6.png
 
-.. raw:: html
-
-   <center>
-
-图六：通过snakefood生成的model dependency图
-
-
-.. raw:: html
-
-   </center>
-
 .. image:: images/pic7.png
 
-.. raw:: html
-
-   <center>
-
-图七：通过pyreverse生成的model dependency图
-
-.. raw:: html
-
-   </center>
 
 两张图分别为使用snakefood和pyreverse工具自动生成并用Graphviz Online绘制的模型依赖图。
 
@@ -220,40 +149,14 @@ Online的左侧页面中，页面右侧相应画出对应的依赖图，并设�
 
 而其中main.py依赖的py文件最多，而依赖于pickle_idea.py的py文件最多，这main.py在项目中占据重要控制地位，而pickle_idea.py在项目中为一个较重要的工具角色。通过后续观察各文件的内容，证明了main.py是一个执行功能文件，pickle_idea.py是一个底层基础的文件。包与包之间关系较好。
 
-3.2 类图中的依赖：
+类图中的依赖：
 ~~~~~~~~~~~~~~~~~~~~
 
 .. image:: images/pic8.png
 
-.. raw:: html
-
-   <center>
-
-图八：通过pyreverse生成的class dependency图
-
-.. raw:: html
-
-   </center>
-
-.. raw:: html
-
-   <center>
-
-.. raw:: html
-
-   </center>
 
 .. image:: images/pic9.png
 
-.. raw:: html
-
-   <center>
-
-图九：经过手动添加修正后的class dependency图
-
-.. raw:: html
-
-   </center>
 
 上示两图分别为我们通过pyreverse工具以及后期手动修正的类依赖图。pyreverse的自动生成功能可以看出，在我们的要求中并不特别适用于EnglishPal项目的类/方法依赖图绘制。
 
@@ -261,7 +164,7 @@ pyreverse其功能，我们简单概括可以理解为，它扫描读取各py文
 
 在这个层面上，我们团队认为该项目的封装抽象程度还存在一定的不足，需要更好的进行改进。
 
-4 讨论
+讨论
 ------
 
 基于实验得出的依赖图，团队进行讨论，认为EnglishPal项目的结构有利有弊，简单列举如下：
@@ -272,10 +175,18 @@ pyreverse其功能，我们简单概括可以理解为，它扫描读取各py文
 
 团队认为该项目各模块之间功能分明，逻辑清晰，具有较好的可读性，但在封装上仍存在一定的不足，需要进行更好的改进。
 
-5 参考资料
+参考资料
 ----------
 
--  开源书籍：\ `Harry Percival and Bob Gregory. Architecture Patterns with Python`_. O’Reilly Media; 1st edition (March 31, 2020).
--  知乎专栏： [Pyreverse结合Graphviz自动绘制Python类图
+-  开源书籍： `Harry Percival and Bob Gregory. Architecture Patterns with Python`_. O’Reilly Media; 1st edition (March 31, 2020).
+-  知乎专栏： `Pyreverse结合Graphviz自动绘制Python类图`_
 
+.. _Architecture Patterns with Python: https://www.cosmicpython.com/
+.. _yarn-like dependency: https://thedailywtf.com/articles/Enterprise-Dependency-Big-Ball-of-Yarn
+.. _silkworm cocoon-like dependency: https://thedailywtf.com/images/201101/DependencyGraph.png
+.. _anglerfish-like dependency: https://thedailywtf.com/images/201103/tes0001.jpg
+.. _putty: https://www.chiark.greenend.org.uk/~sgtatham/putty/
+.. _Graphviz Online: https://dreampuf.github.io/GraphvizOnline/
+.. _EnglishPal项目: https://github.com/lanlab-org/EnglishPal
 .. _Harry Percival and Bob Gregory. Architecture Patterns with Python: https://www.cosmicpython.com/
+.. _Pyreverse结合Graphviz自动绘制Python类图: https://zhuanlan.zhihu.com/p/365953969

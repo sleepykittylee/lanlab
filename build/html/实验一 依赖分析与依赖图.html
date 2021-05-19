@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>实验一: 依赖分析与依赖图 &mdash; Group Li_Yang_Mao_Chen  文档</title>
+  <title>实验一: 依赖分析与依赖图 &mdash; 软件体系架构实验报告  文档</title>
   
 
   
@@ -53,7 +53,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Group Li_Yang_Mao_Chen
+            <a href="index.html" class="icon icon-home"> 软件体系架构实验报告
           
 
           
@@ -87,11 +87,11 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">实验一: 依赖分析与依赖图</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">0 摘要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">1 介绍</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">2 工具与方法</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">2.1 工具</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">2.2 方法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">工具与方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">工具</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">方法</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#snakefood">利用Snakefood生成模型依赖关系</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pyreverse">利用Pyreverse生成模型依赖关系及类/方法依赖关系</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#graphviz-onlinedot">利用Graphviz Online将dot文件绘制成图</a></li>
@@ -99,13 +99,13 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">3 结果</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#py">3.1 py文件之间的依赖：</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">3.2 类图中的依赖：</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">结果</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#py">py文件之间的依赖：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">类图中的依赖：</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">4 讨论</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">5 参考资料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">讨论</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">参考资料</a></li>
 </ul>
 </li>
 </ul>
@@ -123,7 +123,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Group Li_Yang_Mao_Chen</a>
+          <a href="index.html">软件体系架构实验报告</a>
         
       </nav>
 
@@ -177,12 +177,13 @@
             
   <div class="section" id="id1">
 <h1>实验一: 依赖分析与依赖图<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<center><p>作者：李康恬 陈佳瑛 杨恺 毛科捷</p>
-</center>
-
-<center><p>日期：2021/5/12  来源：浙江师范大学</p>
+<center><p>作者：201836900206-李康恬、201836900203-陈佳瑛、</p>
+<blockquote>
+<div><p>201836900127-杨恺、201836000121-毛科捷</p>
+</div></blockquote>
+</center><center><p>日期：2021/5/12  来源：浙江师范大学</p>
 </center><div class="section" id="id2">
-<h2>0 摘要<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2>摘要<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>在软件开发的过程中，我们需要设计编写许多模型架构，在使用HTTP
 APIs帮助开发的过程中，为提高系统的健壮性，需要规避模块（或类）的依赖关系非常复杂的“Big
 ball of mud”的情形。</p>
@@ -191,7 +192,7 @@ Online工具将依赖图表绘制出来。</p>
 <p>最终我们对项目的依赖关系进行分析得出结论，讨论得出项目各模块具有较好的依赖关系与可读性，但在封装上仍存在一定的不足，有待后续开发人员进行更好地调整改进。</p>
 </div>
 <div class="section" id="id3">
-<h2>1 介绍<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2>介绍<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>Percival和Gregory在他们的《<a class="reference external" href="https://www.cosmicpython.com/">Architecture Patterns with
 Python</a>》一书中提到，耦合是一个令人讨厌的事情：它增加了更改代码的风险和成本，有时甚至使我们感到根本无法进行任何更改。而当项目的耦合达到一定程度对我们的系统造成困扰时，我们称这种情况为“Big
 ball of mud”，书中对其如此描述：</p>
@@ -203,9 +204,9 @@ mud”项目依赖模式。</p>
 <p>为学会如何绘制软件项目的依赖图以及进行更好的分析理解，了解体系结构，服务于未来项目的架构设计与开发维护过程中。我们以EnglishPal项目为对象，借助一些工具进行依赖图的绘制，在此基础上对其依赖关系进行分析，了解并梳理出当前系统项目的健康情况/健壮情况。</p>
 </div>
 <div class="section" id="id4">
-<h2>2 工具与方法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2>工具与方法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id5">
-<h3>2.1 工具<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3>工具<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">putty</a></p></li>
 <li><p>Snakefood</p></li>
@@ -217,40 +218,35 @@ mud”项目依赖模式。</p>
 </ul>
 </div>
 <div class="section" id="id6">
-<h3>2.2 方法<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<h3>方法<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <div class="section" id="snakefood">
 <h4>利用Snakefood生成模型依赖关系<a class="headerlink" href="#snakefood" title="永久链接至标题">¶</a></h4>
 <ol class="arabic">
-<li><p>安装putty后打开，在IP地址栏输入server的ip地址，点击打开后输入老师为我们创建的用户名与密码，登入server;</p>
+<li><p>安装putty后打开，在IP地址栏输入server的ip地址，点击打开后输入用户名与密码，登入server;</p>
 <img alt="_images/pic1.png" src="_images/pic1.png" />
-<center><p>图一：PuTTY配置窗口</p>
-</center></li>
+</li>
 <li><p>登入后，通过<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code>指令将EnglishPal项目代码下载下来，并通过<code class="docutils literal notranslate"><span class="pre">cp</span></code>指令将py文件复制到我们建立的文件夹中；</p>
 <img alt="_images/pic2.jpg" src="_images/pic2.jpg" />
-<center><p>图二：git clone</p>
-</center><img alt="_images/pic3.jpg" src="_images/pic3.jpg" />
-<center><p>图三：复制所有py文件</p>
-</center></li>
+<img alt="_images/pic3.jpg" src="_images/pic3.jpg" />
+</li>
 <li><p>复制完毕后<code class="docutils literal notranslate"><span class="pre">cd</span></code>到我们存放py的文件目录中，分别执行第一行，通过snakefood中的sfood工具，生成其依赖关系的dot文件，再执行<code class="docutils literal notranslate"><span class="pre">less</span></code>指令查看result.dot的文件内容，至此我们模型的依赖关系代码就自动地生成完毕。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$  sfood . <span class="p">|</span> sfood-graph &gt; result.dot
 $  less result.dot
 </pre></div>
 </div>
 <img alt="_images/pic4.png" src="_images/pic4.png" />
-<center><p>图四：通过snakefood生成dot格式的依赖关系代码</p>
-</center></li>
+</li>
 </ol>
 </div>
 <div class="section" id="pyreverse">
 <h4>利用Pyreverse生成模型依赖关系及类/方法依赖关系<a class="headerlink" href="#pyreverse" title="永久链接至标题">¶</a></h4>
-<p>绘制方法参考https://zhuanlan.zhihu.com/p/365953969，此处不予具体介绍展示。</p>
+<p>绘制方法参考知乎专栏： <a class="reference external" href="https://zhuanlan.zhihu.com/p/365953969">Pyreverse结合Graphviz自动绘制Python类图</a>，此处不予具体介绍展示。</p>
 <p>生成依赖关系的代码如下，运行代码时终端的响应见下图。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$  pyreverse -ASmy -o dot -p englishpal app/
 </pre></div>
 </div>
 <img alt="_images/pic5.png" src="_images/pic5.png" />
-<center><p>图五：终端响应情况</p>
-</center></div>
+</div>
 <div class="section" id="graphviz-onlinedot">
 <h4>利用Graphviz Online将dot文件绘制成图<a class="headerlink" href="#graphviz-onlinedot" title="永久链接至标题">¶</a></h4>
 <p>将生成的dot文件中的内容复制到Graphviz
@@ -259,14 +255,12 @@ Online的左侧页面中，页面右侧相应画出对应的依赖图，并设�
 </div>
 </div>
 <div class="section" id="id7">
-<h2>3 结果<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<h2>结果<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <div class="section" id="py">
-<h3>3.1 py文件之间的依赖：<a class="headerlink" href="#py" title="永久链接至标题">¶</a></h3>
+<h3>py文件之间的依赖：<a class="headerlink" href="#py" title="永久链接至标题">¶</a></h3>
 <img alt="_images/pic6.png" src="_images/pic6.png" />
-<center><p>图六：通过snakefood生成的model dependency图</p>
-</center><img alt="_images/pic7.png" src="_images/pic7.png" />
-<center><p>图七：通过pyreverse生成的model dependency图</p>
-</center><p>两张图分别为使用snakefood和pyreverse工具自动生成并用Graphviz Online绘制的模型依赖图。</p>
+<img alt="_images/pic7.png" src="_images/pic7.png" />
+<p>两张图分别为使用snakefood和pyreverse工具自动生成并用Graphviz Online绘制的模型依赖图。</p>
 <p>可以看出snakefood绘制的会更清晰美观，且能包含在各py文件中<code class="docutils literal notranslate"><span class="pre">import</span></code>的python包；而pyreverse绘制的则更简洁的表示了项目中模型的依赖关系。两个工具各有利弊，但相对来说老师提供的会更加全面些。</p>
 <p>通过观察我们可以知道各模型/py文件之间的关系：</p>
 <ul class="simple">
@@ -278,18 +272,16 @@ Online的左侧页面中，页面右侧相应画出对应的依赖图，并设�
 <p>而其中main.py依赖的py文件最多，而依赖于pickle_idea.py的py文件最多，这main.py在项目中占据重要控制地位，而pickle_idea.py在项目中为一个较重要的工具角色。通过后续观察各文件的内容，证明了main.py是一个执行功能文件，pickle_idea.py是一个底层基础的文件。包与包之间关系较好。</p>
 </div>
 <div class="section" id="id8">
-<h3>3.2 类图中的依赖：<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<h3>类图中的依赖：<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <img alt="_images/pic8.png" src="_images/pic8.png" />
-<center><p>图八：通过pyreverse生成的class dependency图</p>
-</center><center></center><img alt="_images/pic9.png" src="_images/pic9.png" />
-<center><p>图九：经过手动添加修正后的class dependency图</p>
-</center><p>上示两图分别为我们通过pyreverse工具以及后期手动修正的类依赖图。pyreverse的自动生成功能可以看出，在我们的要求中并不特别适用于EnglishPal项目的类/方法依赖图绘制。</p>
+<img alt="_images/pic9.png" src="_images/pic9.png" />
+<p>上示两图分别为我们通过pyreverse工具以及后期手动修正的类依赖图。pyreverse的自动生成功能可以看出，在我们的要求中并不特别适用于EnglishPal项目的类/方法依赖图绘制。</p>
 <p>pyreverse其功能，我们简单概括可以理解为，它扫描读取各py文件中的class块并建立class之间的关系，也就是可以理解为进行纯类图的绘制。而我们的要求中，要求建立class/function即类/方法依赖图，即py函数中为被封装进类中的方法也要算入并进行绘制，因此pyreverse生成的dot文件并不完全，需要我们后期手动添加。</p>
 <p>在这个层面上，我们团队认为该项目的封装抽象程度还存在一定的不足，需要更好的进行改进。</p>
 </div>
 </div>
 <div class="section" id="id9">
-<h2>4 讨论<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<h2>讨论<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p>基于实验得出的依赖图，团队进行讨论，认为EnglishPal项目的结构有利有弊，简单列举如下：</p>
 <ul class="simple">
 <li><p>优点：代码重用少，功能封装逻辑清晰，变量和方法命名准确使得代码可读性强，代码的结构分为大致三层，第一层为最底层，涉及到对数据库的最基本操作，第二层为功能层，将最底层的对数据库的操作进行组合封装以实现单独的功能，第三层也是最顶层，主要是main.py，他实现的是页面的加载和功能的调用。</p></li>
@@ -298,10 +290,10 @@ Online的左侧页面中，页面右侧相应画出对应的依赖图，并设�
 <p>团队认为该项目各模块之间功能分明，逻辑清晰，具有较好的可读性，但在封装上仍存在一定的不足，需要进行更好的改进。</p>
 </div>
 <div class="section" id="id10">
-<h2>5 参考资料<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<h2>参考资料<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p>开源书籍：<a class="reference external" href="https://www.cosmicpython.com/">Harry Percival and Bob Gregory. Architecture Patterns with Python</a>. O’Reilly Media; 1st edition (March 31, 2020).</p></li>
-<li><p>知乎专栏： [Pyreverse结合Graphviz自动绘制Python类图</p></li>
+<li><p>开源书籍： <a class="reference external" href="https://www.cosmicpython.com/">Harry Percival and Bob Gregory. Architecture Patterns with Python</a>. O’Reilly Media; 1st edition (March 31, 2020).</p></li>
+<li><p>知乎专栏： <a class="reference external" href="https://zhuanlan.zhihu.com/p/365953969">Pyreverse结合Graphviz自动绘制Python类图</a></p></li>
 </ul>
 </div>
 </div>

@@ -18,10 +18,11 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Group Li_Yang_Mao_Chen'
+project = '软件体系架构实验报告'
 copyright = '2021, kittylee'
-author = 'kittylee'
+author = '李康恬 陈佳瑛 杨恺 毛科捷'
 
+github_doc_root = 'https://github.com/sleepykittylee/lanlab'
 
 # -- General configuration ---------------------------------------------------
 
